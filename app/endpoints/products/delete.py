@@ -11,7 +11,7 @@ from app import app
 tag_product  = Tag(name="Product", description="CRUD of Products")
 
 # Route: Delete Product
-@app.delete("/product", tags = [tag_product], responses={"201": GenericMessageSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
+@app.delete("/product/", tags = [tag_product], responses={"201": GenericMessageSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
 def delete_product(query: SearchProductSchema):
     """
     Delete Product

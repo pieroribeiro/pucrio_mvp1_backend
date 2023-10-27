@@ -15,7 +15,7 @@ from app import app
 tag_product  = Tag(name="Product", description="CRUD of Products")
 
 # Route: GET Product by Id
-@app.get("/product", tags = [tag_product], responses={"200": ViewProductSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
+@app.get("/product/", tags = [tag_product], responses={"200": ViewProductSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
 def get_product(query: SearchProductSchema):
     """
     Get a product from Database

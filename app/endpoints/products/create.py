@@ -14,7 +14,7 @@ from app import app
 tag_product  = Tag(name="Product", description="CRUD of Products")
 
 # Route: Create Product
-@app.post("/product", tags = [tag_product], responses={"201": ViewProductSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
+@app.post("/product/", tags = [tag_product], responses={"201": ViewProductSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
 def create_product(form: CreateProductSchema):
     """
     Create a new product in Database

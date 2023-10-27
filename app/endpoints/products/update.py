@@ -15,7 +15,7 @@ from app import app
 tag_product  = Tag(name="Product", description="CRUD of Products")
 
 # Route: Update Product
-@app.put("/product", tags = [tag_product], responses={"201": GenericMessageSchema, "404": GenericErrorSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
+@app.put("/product/", tags = [tag_product], responses={"201": GenericMessageSchema, "404": GenericErrorSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
 def update_product(query: SearchProductSchema, form: CreateProductSchema):
     """
     Update Product
