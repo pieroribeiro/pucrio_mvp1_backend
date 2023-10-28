@@ -1,4 +1,4 @@
-from app.models.product import Product
+from app.models.products import Product
 
 def show_product (product: Product):
     """

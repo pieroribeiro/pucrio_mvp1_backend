@@ -4,7 +4,8 @@ from sqlalchemy import create_engine
 import os
 
 from app.models.base import Base
-from app.models.product import Product
+from app.models.products import Product
+from app.models.sells import Sells
 
 db_path = "database/"
 if not os.path.exists(db_path):

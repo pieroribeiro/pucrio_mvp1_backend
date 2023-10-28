@@ -22,7 +22,6 @@ def get_product(query: SearchProductSchema):
     """
 
     try:
-        logger.warning(f"ProductId: {query.id}")
         product_id = query.id
 
         session = Session()
