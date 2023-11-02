@@ -1,6 +1,9 @@
 # PUCRIO - MVP Fullstack - BACKEND
 Repositório referente ao MVP da disciplina Desenvolvimento Fullstack Básico - Backend
 
+## Swagger (API Documentation):
+http://127.0.0.1:5000/openapi/swagger
+
 ## Database concepts:
 
 ```
@@ -29,7 +32,3 @@ Ref: Sales.id - Sales_Products.sale_id [delete: cascade, update: cascade]
 ## Database Diagram:
 
 ![image](https://github.com/pieroribeiro/pucrio_mvp1_backend/assets/2132546/f17ccc70-0207-4faf-91fd-755ee96a34a6)
-
-## Application Endpoints:
-
-### [GET] [/products] - List all Products
