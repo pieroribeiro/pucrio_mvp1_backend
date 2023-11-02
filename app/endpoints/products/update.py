@@ -15,13 +15,13 @@ from app import app
 tag_product  = Tag(name="Product", description="CRUD of Products")
 
 # Route: Update Product
-@app.put("/product/", tags = [tag_product], responses={"201": GenericMessageSchema, "404": GenericErrorSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
-def update_product(query: SearchProductSchema, form: CreateProductSchema):
+@app.put("/product/<int:id>", tags = [tag_product], responses={"201": GenericMessageSchema, "404": GenericErrorSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
+def update_product(path: SearchProductSchema, form: CreateProductSchema):
     """
     Update Product
     """
     try:
-        product_id = query.id
+        product_id = path.id
         session = Session()
         product = session.query(Product).filter(Product.id == product_id).first()
             

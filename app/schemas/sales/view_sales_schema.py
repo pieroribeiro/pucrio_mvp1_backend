@@ -1,8 +1,8 @@
 from pydantic import BaseModel
 
-class ViewSellSchema (BaseModel):
+class ViewSalesSchema (BaseModel):
     """
-    Define as sell will be returned.
+    Define as sales will be returned.
     """
     id: int
     product_id: int

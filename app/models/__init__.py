@@ -5,7 +5,7 @@ import os
 
 from app.models.base import Base
 from app.models.products import Product
-from app.models.sells import Sells
+from app.models.sales import Sales
 
 db_path = "database/"
 if not os.path.exists(db_path):

@@ -11,13 +11,13 @@ from app import app
 tag_product  = Tag(name="Product", description="CRUD of Products")
 
 # Route: Delete Product
-@app.delete("/product/", tags = [tag_product], responses={"201": GenericMessageSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
-def delete_product(query: SearchProductSchema):
+@app.delete("/product/<int:id>", tags = [tag_product], responses={"201": GenericMessageSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
+def delete_product(path: SearchProductSchema):
     """
     Delete Product
     """
     try:
-        product_id = query.id
+        product_id = path.id
         session = Session()
         product = session.query(Product).filter(Product.id == product_id)
             

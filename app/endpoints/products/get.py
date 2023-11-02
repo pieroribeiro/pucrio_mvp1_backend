@@ -12,17 +12,17 @@ from app.models import Session, Product
 from app import app
 
 # tags of routes
-tag_product  = Tag(name="Product", description="CRUD of Products")
+tag_product  = Tag(name="Product", description="Endpoints to manipulate products")
 
 # Route: GET Product by Id
-@app.get("/product/", tags = [tag_product], responses={"200": ViewProductSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
-def get_product(query: SearchProductSchema):
+@app.get("/product/<int:id>", summary="get product by id", tags = [tag_product], responses={"200": ViewProductSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
+def get_product(path: SearchProductSchema):
     """
-    Get a product from Database
+    Get a product from Database with id parameter
     """
 
     try:
-        product_id = query.id
+        product_id = path.id
 
         session = Session()
         product = session.query(Product).filter(Product.id == product_id).first()
