@@ -1,13 +1,15 @@
+from typing import List
 from app.models.sales import Sales
 
-def show_sales (sales: Sales):
+def show_sales (sales: List[Sales]):
     """
-    Return an representation of One Product.
+    Return an Array of Sale.
     """
-    return {
-        "id": sales.id,
-        "product_id": sales.product_id,
-        "product_value": sales.product_value,
-        "created_at": sales.created_at,
-        "updated_at": sales.updated_at
-    }
+    results = []
+    for sale in sales:
+        results.append({
+            "id": sale.id,
+            "created_at": sale.created_at
+        })
+
+    return {"sales": results}
