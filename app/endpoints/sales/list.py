@@ -1,20 +1,15 @@
-from flask_openapi3 import Tag
-
 from sqlalchemy.exc import IntegrityError
-from datetime import datetime
 
 from app.helpers.logger import logger
 from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.schemas.sales.list_sales_schema import ListSalesSchema
 from app.schemas.sales.show_sales import show_sales
 from app.models import Session, Sales
+from app.tags.sales import Tag_Sales
 from app import app
 
-# tags of routes
-tag_sales  = Tag(name="Sales", description="CRUD of Sales")
-
 # Route: GET All Products
-@app.get("/products/", tags = [tag_sales], responses={"200": ListSalesSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
+@app.get("/sales/", tags = [Tag_Sales], responses={"200": ListSalesSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
 def get_sales():
     """
     Return all sales from database
@@ -30,8 +25,13 @@ def get_sales():
         else:
             return show_sales (sales), 200
     
+    except IntegrityError as e:
+        logger.warning(e)
+
+        return {"message": error_msg}, 409
+    
     except Exception as e:
         error_msg = f"Not was possible to get the sales from database"
-        logger.warning(f"{error_msg}, {e}")
+        logger.warning(e)
 
         return {"message": error_msg}, 500

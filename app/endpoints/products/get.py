@@ -1,21 +1,14 @@
-from flask_openapi3 import Tag
-
-from sqlalchemy.exc import IntegrityError
-from datetime import datetime
-
 from app.helpers.logger import logger
 from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.schemas.products.view_product_schema import ViewProductSchema
 from app.schemas.products.search_product_schema import SearchProductSchema
 from app.schemas.products.show_product import show_product
 from app.models import Session, Product
+from app.tags.products import Tag_Product
 from app import app
 
-# tags of routes
-tag_product  = Tag(name="Product", description="Endpoints to manipulate products")
-
 # Route: GET Product by Id
-@app.get("/product/<int:id>", summary="get product by id", tags = [tag_product], responses={"200": ViewProductSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
+@app.get("/product/<int:id>", summary="get product by id", tags = [Tag_Product], responses={"200": ViewProductSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
 def get_product(path: SearchProductSchema):
     """
     Get a product from Database with id parameter

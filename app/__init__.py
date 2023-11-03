@@ -6,6 +6,7 @@ CORS(app)
 
 from app.endpoints.products import create, delete, get, list, update
 from app.endpoints.sales import create, delete, list
+from app.endpoints.sales_items import create, delete, list
 
 @app.errorhandler(404)
 def endpoint_not_found(error):

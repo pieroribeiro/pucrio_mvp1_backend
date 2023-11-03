@@ -1,17 +1,13 @@
-from flask_openapi3 import Tag
-
 from app.helpers.logger import logger
 from app.schemas.products.search_product_schema import SearchProductSchema
 from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.schemas.messages.generic_message_schema import GenericMessageSchema
 from app.models import Session, Product
+from app.tags.products import Tag_Product
 from app import app
 
-# tags of routes
-tag_product  = Tag(name="Product", description="CRUD of Products")
-
 # Route: Delete Product
-@app.delete("/product/<int:id>", tags = [tag_product], responses={"201": GenericMessageSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
+@app.delete("/product/<int:id>", tags = [Tag_Product], responses={"201": GenericMessageSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
 def delete_product(path: SearchProductSchema):
     """
     Delete Product

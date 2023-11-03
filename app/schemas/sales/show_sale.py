@@ -5,6 +5,6 @@ def show_sale (sale: Sales):
     Return an representation of One Sale.
     """
     return {
-        "id": sales.id,
-        "created_at": sales.created_at
+        "id": sale.id,
+        "created_at": sale.created_at
     }

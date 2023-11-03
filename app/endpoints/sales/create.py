@@ -1,37 +1,40 @@
-from flask_openapi3 import Tag
+from sqlalchemy.exc import IntegrityError
 
 from app.helpers.logger import logger
 from app.schemas.sales.view_sales_schema import ViewSalesSchema
-from app.schemas.sales.show_sales import show_sales
+from app.schemas.sales.show_sale import show_sale
 
 from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.models import Session, Sales
+from app.tags.sales import Tag_Sales
 from app import app
 
-# tags of routes
-tag_sales  = Tag(name="Sales", description="CRUD of Sales")
-
 # Route: Create Product
-@app.post("/sales/", tags = [tag_sales], responses={"201": ViewSalesSchema, "500": GenericErrorSchema})
-def create_sales():
+@app.post("/sales/", tags = [Tag_Sales], responses={"201": ViewSalesSchema, "500": GenericErrorSchema})
+def create_sale():
     """
     Create a new sales in Database
     Return created sales
     """
 
     try:
-        sales = Sales()
+        sale = Sales()
 
         session = Session()
-        session.add(sales) 
+        session.add(sale) 
         session.commit()
 
-        logger.debug(f"The sell '{sales.id}' has been saved on database!")
+        logger.debug(f"Cannot create a new sale on database!")
 
-        return show_sales(sales), 201
+        return show_sale(sale), 201
+    
+    except IntegrityError as e:
+        logger.warning(e)
+
+        return {"message": error_msg}, 409
 
     except Exception as e:
-        error_msg = "Not was possible to save the sell into database"
-        logger.warning(f"Error to add product '{sales.id}', {error_msg}")
+        error_msg = "Not was possible to save the sale into database"
+        logger.warning(e)
 
         return {"message": error_msg}, 500

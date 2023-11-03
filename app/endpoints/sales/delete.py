@@ -1,18 +1,16 @@
-from flask_openapi3 import Tag
+from sqlalchemy.exc import IntegrityError
 
 from app.helpers.logger import logger
 from app.schemas.sales.search_sales_schema import SearchSalesSchema
 from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.schemas.messages.generic_message_schema import GenericMessageSchema
 from app.models import Session, Sales
+from app.tags.sales import Tag_Sales
 from app import app
 
-# tags of routes
-tag_sales  = Tag(name="Sales", description="CRUD of Sales")
-
 # Route: Delete Product
-@app.delete("/sales/<int:id>", tags = [tag_sales], responses={"201": GenericMessageSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
-def delete_sales(path: SearchSalesSchema):
+@app.delete("/sales/<int:id>", tags = [Tag_Sales], responses={"201": GenericMessageSchema, "409": GenericErrorSchema, "500": GenericErrorSchema})
+def delete_sale(path: SearchSalesSchema):
     """
     Delete Product
     """
@@ -29,6 +27,11 @@ def delete_sales(path: SearchSalesSchema):
             sale.delete()
             session.commit()
             return {"mesage": f"Sale '{sale_id} deleted'"}, 200
+    
+    except IntegrityError as e:
+        logger.warning(e)
+
+        return {"message": error_msg}, 409
     
     except Exception as e:
         error_msg = f"Not was possible to find the sale from database to delete"
