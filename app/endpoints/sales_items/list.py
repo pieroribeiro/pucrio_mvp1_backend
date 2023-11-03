@@ -1,7 +1,4 @@
-from flask_openapi3 import Tag
-
 from sqlalchemy.exc import IntegrityError
-from datetime import datetime
 
 from app.helpers.logger import logger
 from app.schemas.errors.generic_error_schema import GenericErrorSchema
@@ -9,7 +6,7 @@ from app.schemas.sales_items.list_sales_items_schema import ListSalesItemsSchema
 from app.schemas.sales_items.search_sales_items_schema import SearchSalesItemsSchema
 from app.schemas.sales_items.show_sale_items import show_sale_items
 from app.models import Session, Sales_Items
-from app.tags.sales_items import Tag_Sales_Items
+from app.openapi_tags.sales_items import Tag_Sales_Items
 from app import app
 
 # Route: GET All Products

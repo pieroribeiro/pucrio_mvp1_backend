@@ -3,7 +3,7 @@ from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.schemas.products.list_products_schema import ListProductsSchema
 from app.schemas.products.show_products import show_products
 from app.models import Session, Product
-from app.tags.products import Tag_Product
+from app.openapi_tags.products import Tag_Product
 from app import app
 
 # Route: GET All Products

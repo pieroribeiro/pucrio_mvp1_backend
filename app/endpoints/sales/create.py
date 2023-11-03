@@ -6,7 +6,7 @@ from app.schemas.sales.show_sale import show_sale
 
 from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.models import Session, Sales
-from app.tags.sales import Tag_Sales
+from app.openapi_tags.sales import Tag_Sales
 from app import app
 
 # Route: Create Product

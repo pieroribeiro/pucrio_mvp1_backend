@@ -5,7 +5,7 @@ from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.schemas.sales.list_sales_schema import ListSalesSchema
 from app.schemas.sales.show_sales import show_sales
 from app.models import Session, Sales
-from app.tags.sales import Tag_Sales
+from app.openapi_tags.sales import Tag_Sales
 from app import app
 
 # Route: GET All Products

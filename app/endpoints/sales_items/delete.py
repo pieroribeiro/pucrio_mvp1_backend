@@ -1,11 +1,9 @@
-from flask_openapi3 import Tag
-
 from app.helpers.logger import logger
 from app.schemas.sales_items.search_sales_items_schema import SearchSalesItemsSchema
 from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.schemas.messages.generic_message_schema import GenericMessageSchema
 from app.models import Session, Sales_Items
-from app.tags.sales_items import Tag_Sales_Items
+from app.openapi_tags.sales_items import Tag_Sales_Items
 from app import app
 
 # Route: Delete Product

@@ -5,7 +5,7 @@ from app.schemas.sales.search_sales_schema import SearchSalesSchema
 from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.schemas.messages.generic_message_schema import GenericMessageSchema
 from app.models import Session, Sales
-from app.tags.sales import Tag_Sales
+from app.openapi_tags.sales import Tag_Sales
 from app import app
 
 # Route: Delete Product

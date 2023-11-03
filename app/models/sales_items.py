@@ -5,9 +5,12 @@ from app.models import Base
 class Sales_Items(Base):
     __tablename__ = 'sales_items'
 
-    id: Mapped[int]             = mapped_column(Integer, primary_key=True, autoincrement=True, nullable=False)
-    sale_id: Mapped[int]        = mapped_column(ForeignKey("sales.id"), nullable=False)
-    product_id: Mapped[int]     = mapped_column(ForeignKey("products.id"), nullable=False)
+    sale_id: Mapped[int]        = mapped_column(ForeignKey("sales.id"), nullable=False, primary_key=True)
+    product_id: Mapped[int]     = mapped_column(ForeignKey("products.id"), nullable=False, primary_key=True)
 
-    def __init__ (self):
-        pass
+    sales                       = relationship("Sales", back_populates="sales_items")
+    products                    = relationship("Products", back_populates="sales_items")
+
+    def __init__ (self, sale_id: int, product_id: int):
+        self.sale_id = sale_id
+        self.product_id = product_id

@@ -7,7 +7,7 @@ from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.schemas.products.search_product_schema import SearchProductSchema
 from app.schemas.products.create_product_schema import CreateProductSchema
 from app.models import Session, Product
-from app.tags.products import Tag_Product
+from app.openapi_tags.products import Tag_Product
 from app import app
 
 # Route: Update Product
