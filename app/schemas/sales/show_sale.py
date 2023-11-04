@@ -1,4 +1,4 @@
-from app.models.sales import Sales
+from app.models.tables import Sales
 
 def show_sale (sale: Sales):
     """

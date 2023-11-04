@@ -1,7 +1,7 @@
 from typing import List
-from app.models.products import Product
+from app.models.tables import Products
 
-def show_products (products: List[Product]):
+def show_products (products: List[Products]):
     """
     Return an Array of Products.
     """

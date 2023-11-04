@@ -1,5 +1,5 @@
 from typing import List
-from app.models.sales_items import Sales_Items
+from app.models.tables import Sales_Items
 
 def show_sale_items (sale_items: List[Sales_Items]):
     """

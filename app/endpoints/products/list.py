@@ -2,7 +2,7 @@ from app.helpers.logger import logger
 from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.schemas.products.list_products_schema import ListProductsSchema
 from app.schemas.products.show_products import show_products
-from app.models import Session, Product
+from app.models import Session, Products
 from app.openapi_tags.products import Tag_Product
 from app import app
 
@@ -14,7 +14,7 @@ def get_products():
     """
     try:
         session = Session()
-        products = session.query(Product)
+        products = session.query(Products)
             
         if not products:
             error_msg = f"Products not found in database!"

@@ -6,7 +6,7 @@ from app.schemas.messages.generic_message_schema import GenericMessageSchema
 from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.schemas.products.search_product_schema import SearchProductSchema
 from app.schemas.products.create_product_schema import CreateProductSchema
-from app.models import Session, Product
+from app.models import Session, Products
 from app.openapi_tags.products import Tag_Product
 from app import app
 
@@ -19,7 +19,7 @@ def update_product(path: SearchProductSchema, form: CreateProductSchema):
     try:
         product_id = path.id
         session = Session()
-        product = session.query(Product).filter(Product.id == product_id).first()
+        product = session.query(Products).filter(Products.id == product_id).first()
             
         if not product:
             error_msg = f"Product not found to update!"

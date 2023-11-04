@@ -1,6 +1,6 @@
-from app.models.products import Product
+from app.models.tables import Products
 
-def show_product (product: Product):
+def show_product (product: Products):
     """
     Return an representation of One Product.
     """

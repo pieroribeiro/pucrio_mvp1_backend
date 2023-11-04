@@ -5,7 +5,7 @@ from app.schemas.products.create_product_schema import CreateProductSchema
 from app.schemas.products.view_product_schema import ViewProductSchema
 from app.schemas.errors.generic_error_schema import GenericErrorSchema
 from app.schemas.products.show_product import show_product
-from app.models import Session, Product
+from app.models import Session, Products
 from app.openapi_tags.products import Tag_Product
 from app import app
 
@@ -18,7 +18,7 @@ def create_product(form: CreateProductSchema):
     """
 
     try:
-        product = Product(name=form.name, value=form.value)
+        product = Products(name=form.name, value=form.value)
 
         session = Session()
         session.add(product) 
@@ -29,13 +29,11 @@ def create_product(form: CreateProductSchema):
         return show_product(product), 201
     
     except IntegrityError as e:
-        error_msg = "Product with same name already exists in database"
-        logger.warning(f"Error to add product '{product.name}', {error_msg}")
+        logger.warning(e)
 
-        return {"message": error_msg}, 409
+        return {"message": "Product with same name already exists in database"}, 409
 
     except Exception as e:
-        error_msg = "Not was possible to save the product into database"
-        logger.warning(f"Error to add product '{product.name}', {error_msg}")
+        logger.warning(e)
 
-        return {"message": error_msg}, 500
+        return {"message": "Not was possible to save the product into database"}, 500
