@@ -55,6 +55,7 @@ class Sales_Items(Base):
     sale: Mapped["Sales"]                   = relationship("Sales", back_populates="items")
     product: Mapped["Products"]             = relationship("Products")
 
-    def __init__ (self, sale_id: int, product_id: int):
+    def __init__ (self, sale_id: int, product_id: int, product_quantity:float):
         self.sale_id = sale_id
         self.product_id = product_id
+        self.product_quantity = product_quantity

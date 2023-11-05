@@ -8,11 +8,9 @@ def show_sale_items (sale_items: List[Sales_Items]):
     results = []
     for sale_item in sale_items:
         results.append({
-            "id": sale_item.id,
-            "name": sale_item.name,
-            "value": sale_item.value,
-            "created_at": sale_item.created_at,
-            "updated_at": sale_item.updated_at
+            "sale_id": sale_item.sale_id,
+            "product_id": sale_item.product_id,
+            "product_quantity": sale_item.product_quantity
         })
 
     return {"sale_items": results}

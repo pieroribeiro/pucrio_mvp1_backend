@@ -6,3 +6,4 @@ class CreateSaleItemSchema (BaseModel):
     """
     sale_id: int
     product_id: int
+    product_quantity: float
