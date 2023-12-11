@@ -19,7 +19,7 @@ def get_products():
         if not products:
             error_msg = f"Products not found in database!"
             logger.warning(error_msg)
-            return {"mesage": error_msg}, 404
+            return {"message": error_msg}, 404
         else:
             return show_products (products), 200
     
