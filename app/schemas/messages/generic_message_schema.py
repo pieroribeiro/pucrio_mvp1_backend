@@ -4,4 +4,4 @@ class GenericMessageSchema(BaseModel):
     """
     Define representation of message.
     """
-    mesage: str
+    message: str

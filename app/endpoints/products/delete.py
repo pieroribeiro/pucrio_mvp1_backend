@@ -24,11 +24,11 @@ def delete_product(path: SearchProductSchema):
         if not product.first():
             error_msg = f"Product not found to delete!"
             logger.warning(error_msg)
-            return {"mesage": error_msg}, 404
+            return {"message": error_msg}, 404
         else:
             product.delete()
             session.commit()
-            return {"mesage": f"Product '{product_id} deleted'"}, 200
+            return {"message": f"Product '{product_id} deleted'"}, 200
     
     except Exception as e:
         error_msg = f"Not was possible to find the product from database to delete"

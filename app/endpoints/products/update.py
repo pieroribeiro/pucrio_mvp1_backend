@@ -28,13 +28,13 @@ def update_product(path: SearchProductSchema, form: CreateProductSchema):
         if not product:
             error_msg = f"Product not found to update!"
             logger.warning(error_msg)
-            return {"mesage": error_msg}, 404
+            return {"message": error_msg}, 404
         else:
             product.name = form.name
             product.value = form.value
             product.updated_at = datetime.now()
             session.commit()
-            return {"mesage": f"Product '{product_id} updated'"}, 201
+            return {"message": f"Product '{product_id} updated'"}, 201
         
     except IntegrityError as e:
         error_msg = "Product with same name already exists in database"

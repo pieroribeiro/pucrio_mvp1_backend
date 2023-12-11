@@ -4,4 +4,4 @@ class GenericErrorSchema(BaseModel):
     """
     Define representation of error message.
     """
-    mesage: str
+    message: str

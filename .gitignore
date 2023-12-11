@@ -124,6 +124,7 @@ celerybeat.pid
 .venv
 env/
 venv/
+venv_python_backend/
 ENV/
 env.bak/
 venv.bak/

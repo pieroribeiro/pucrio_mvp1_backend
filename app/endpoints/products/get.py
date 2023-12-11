@@ -30,7 +30,7 @@ def get_product(path: SearchProductSchema):
         if not product:
             error_msg = f"Product '{product_id}' not found in database!"
             logger.warning(f"Error on search product in database, {error_msg}")
-            return {"mesage": error_msg}, 404
+            return {"message": error_msg}, 404
         else:
             return show_product (product), 200
     
